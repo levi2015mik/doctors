@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "node index.js",
     "dev": "node  --inspect index.js"
   },
@@ -13,6 +13,15 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "koa": "^2.11.0",
-    "koa-router": "^8.0.8"
+    "koa-body": "^4.1.1",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^8.0.8",
+    "mongoose": "^5.9.11",
+    "mongose": "0.0.2-security"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^7.1.2"
   }
 }
