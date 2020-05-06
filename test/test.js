@@ -8,13 +8,14 @@ const server = require("../index");
 let should = chai.should();
 chai.use(http);
 
+// Включение режима тестирования
 describe('Create test environment', () => {
     beforeEach((done) => {
         done()
     })
 });
 
-
+// Проверка mocha/ chai
 describe("Test System test",function() {
     describe("start",function () {
         it("equal",()=>{chai.assert.equal(1,1)});
@@ -22,7 +23,8 @@ describe("Test System test",function() {
     })
 });
 
-describe("Api",function() {
+// Проверкаа rest api
+describe("Rest api",function() {
     describe("Users",function () {
         it("get",function s(done){
             chai.request(server).get("/users").end((err,res)=>{

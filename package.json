@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha",
     "start": "node index.js",
-    "dev": "node  --inspect index.js"
+    "dev": "node  --inspect index.js",
+    "prefill": "node structures/prefill.js",
+    "prefill_dev": "node --inspect structures/prefill.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +19,8 @@
     "koa-logger": "^3.2.1",
     "koa-router": "^8.0.8",
     "mongoose": "^5.9.11",
-    "mongose": "0.0.2-security"
+    "mongose": "0.0.2-security",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

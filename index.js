@@ -3,6 +3,8 @@ const router = require("koa-router");
 const logger = require("koa-logger");
 const bodyParser = require("koa-body");
 
+const mongo = require("./structures/mongo")();
+
 //const mongo = require("./structures/mongo");
 
 const users = require("./routes/users");
