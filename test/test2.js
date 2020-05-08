@@ -11,14 +11,15 @@ chai.use(http);
 
 //
 describe("Rest api",function() {
-    let doctorsList;
+    let doctorsList,newUsers;
     describe("Doctors correct", function () {
         beforeEach(async () => {
             await Doctor.deleteMany({});
 
-            let newUsers = [
+            newUsers = [
                 {name:"Noskov Igir Nikolaevich",spec:"Psihiatr"},
-                {name: "Masnikov Vladimir",spec: "Venerolog"}
+                {name: "Masnikov Vladimir",spec: "Venerolog"},
+                {name: "Viktor Odintsov",spec: "Venerolog"},
                 ].map(el=>new Doctor(el));
             doctorsList = await Promise.all(newUsers.map(el=>el.save()))
         });
@@ -61,9 +62,36 @@ describe("Rest api",function() {
                 res.should.header("content-type","application/json; charset=utf-8");
                 res.body.msg.should.to.equal("deleted");
                 const collection = await Doctor.find();
-                collection.length.should.to.equal(1);
+                collection.length.should.to.equal(newUsers.length - 1);
                 done()
             })
+        })
+
+        it("Open slots",(done)=>{
+            const url = `/doctors/${doctorsList[0].id}/slot`;
+            let time = new Date();
+            time.setDate(time.getDate() +1);
+            time.setHours(9);
+            time.setMinutes(0);
+
+            let slots = [];
+            const count = 10;
+
+            for (let i = 0;i < count;i ++){
+                slots.push({time:time.getTime()});
+                time.setMinutes(time.getMinutes() + 30)
+            }
+            chai.request(server).put(url).set({"x-api-key":12344}).
+            send(slots).
+            end(async (err,res)=>{
+                res.should.have.status(200);
+                res.should.header("content-type","application/json; charset=utf-8");
+                res.body.slots.length.should.to.equal(count);
+                const baseDoc = await Doctor.findOne({id:doctorsList[0].id});
+                baseDoc.slots.length.should.to.equal(count);
+                done()
+            })
+
         })
     })
 });

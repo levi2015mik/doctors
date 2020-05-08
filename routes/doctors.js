@@ -48,6 +48,16 @@ _.get("/",async ctx=>{
         }
         ctx.body = docCopy
 
+    })
+
+    // Добавление слота/слотов
+    .put("/:id/slot",async ctx=>{
+        const res = await Doctor.findOne({"id":ctx.params.id});
+        for(let i = 0;i < ctx.request.body.length;i ++)
+        res.slots.push({time:new Date(ctx.request.body[i].time)});
+        await res.save();
+        ctx.body = res;
     });
+
 
 module.exports = _.routes();
