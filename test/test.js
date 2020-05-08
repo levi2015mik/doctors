@@ -3,15 +3,23 @@ process.env.NODE_ENV = 'test';
 const chai = require("chai");
 const http = require("chai-http");
 
-const server = require("../index");
+const User = require("../structures/users");
+const Doctor = require("../structures/doctors");
 
+const server = require("../index");
 let should = chai.should();
 chai.use(http);
 
 // Включение режима тестирования
 describe('Create test environment', () => {
-    beforeEach((done) => {
-        done()
+    beforeEach( () => {
+        console.log("788")
+        // await User.deleteMany({});
+        // await Doctor.deleteMany({});
+
+        // let newUsers = [{name:"Keren",phone:"052 875 76 60"},{name: "Miron",phone: "434 54 32"}].map(el=>new User(el));
+        // await Promise.all(newUsers.map(el=>el.save())).then(console.log).catch(console.log);
+
     })
 });
 
@@ -25,24 +33,62 @@ describe("Test System test",function() {
 
 // Проверкаа rest api
 describe("Rest api",function() {
+
     describe("Users",function () {
-        it("get",function s(done){
+        let usersList;
+        beforeEach(async () => {
+            await User.deleteMany({});
+            await Doctor.deleteMany({});
+
+            let newUsers = [{name:"Keren",phone:"052 875 76 60"},{name: "Miron",phone: "434 54 32"}].map(el=>new User(el));
+            usersList = await Promise.all(newUsers.map(el=>el.save()))
+        });
+
+        it("get",function (){
             chai.request(server).get("/users").end((err,res)=>{
                res.should.have.status(200);
                res.should.header("content-type","application/json; charset=utf-8");
-               res.body.should.be.a("array")
+               res.body.should.be.a("array");
             });
-            done()
         });
-        it("put",()=>{
+        it("Put incorrect",()=>{
             chai.request(server).put("/users").set({"x-api-key":12344}).send({name:"1234"}).
+                end((err,res)=>{
+                    res.should.have.status(400);
+                    res.should.header("content-type","application/json; charset=utf-8");
+                    // res.body.should.hasOwnProperty("id")
+            })
+        });
+        it("Put",()=>{
+            chai.request(server).put(`/users`).set({"x-api-key":12344}).send({name:"Alex", phone:"123453556"}).
                 end((err,res)=>{
                     res.should.have.status(200);
                     res.should.header("content-type","application/json; charset=utf-8");
-                    res.body.should.hasOwnProperty("id")
+                    res.body.should.hasOwnProperty("id");
             })
         });
-        it("post",()=>{chai.assert.notEqual(1,0)});
-        it("delete",()=>{chai.assert.notEqual(1,0)});
+        it("post",(done)=>{
+            const phone = "9988";
+            const url = `/users/${usersList[0].id}`;
+            chai.request(server).post(url).set({"x-api-key":12344}).send({phone:phone}).
+                end((err,res)=>{
+                res.should.have.status(200);
+                res.should.header("content-type","application/json; charset=utf-8");
+                res.body.phone.should.to.equal(phone);
+                done()
+            })
+
+        });
+        it("delete", (done)=>{
+            const url = `/users/${usersList[0].id}`;
+            chai.request(server).delete(url).set({"x-api-key":12344}).
+            end( async (err,res)=>{
+                res.should.have.status(200);
+                res.should.header("content-type","application/json; charset=utf-8");
+                res.body.msg.should.to.equal("deleted");
+                const collection = await User.find();
+                collection.length.should.to.equal(1);
+                done()
+            })
     })
-});
+})});

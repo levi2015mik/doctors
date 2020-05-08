@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c8dd146-cc63-40f3-9ab4-fe25625787d0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/structures/doctors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structures/prefill.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structures/reservations.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structures/users.js" afterDir="false" />
+    <list default="true" id="7c8dd146-cc63-40f3-9ab4-fe25625787d0" name="Default Changelist" comment="added modeles mongoose, connected user routes with model">
+      <change afterPath="$PROJECT_DIR$/routes/assigns.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/structures/mongo.js" beforeDir="false" afterPath="$PROJECT_DIR$/structures/mongo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.js" afterDir="false" />
@@ -53,7 +48,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.test">
     <configuration default="true" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -148,10 +143,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.test" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.prefill" />
         <item itemvalue="Mocha.Api.Users.get" />
         <item itemvalue="Mocha.Api.Users" />
-        <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
   </component>
@@ -168,7 +163,7 @@
       <workItem from="1588518833550" duration="5695000" />
       <workItem from="1588597950952" duration="8916000" />
       <workItem from="1588678931295" duration="15089000" />
-      <workItem from="1588763705310" duration="12082000" />
+      <workItem from="1588763705310" duration="32361000" />
     </task>
     <task id="LOCAL-00001" summary="Start unit test http api">
       <created>1588697497043</created>
@@ -182,6 +177,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -198,6 +203,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start unit test http api" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start unit test http api" />
+    <MESSAGE value="added modeles mongoose, connected user routes with model" />
+    <option name="LAST_COMMIT_MESSAGE" value="added modeles mongoose, connected user routes with model" />
   </component>
 </project>

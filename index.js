@@ -9,6 +9,7 @@ const mongo = require("./structures/mongo")();
 
 const users = require("./routes/users");
 const doctors = require("./routes/doctors");
+const assigns = require("./routes/assigns");
 
 const app = new Koa();
 app.use(bodyParser({
@@ -23,6 +24,7 @@ app.use(logger());
 const _ = router();
 _.use("/users",users);
 _.use("/doctors",doctors);
+_.use("/assign",assigns);
 app.use(_.routes());
 module.exports =app.listen(3000);
 

@@ -24,17 +24,12 @@ _.get("/",async ctx=>{
     ctx.body=user;
 })
 .post("/:id", async ctx=>{
-    let user = await User.find({"id":ctx.params.id});
-    if(user.length === 0) {// error not found
-        ctx.throw(404,Error("user not found"));
-        return;
-    } else
-        user = user[0];
-    for(let nm in ctx.request.body) user[nm] = ctx.request.body[nm];
+    let user;
     try{
-        await user.save();
+        user = await User.findOneAndUpdate({"id":ctx.params.id},ctx.request.body,{new: true});
+        if(!user) throw( {status:404,message:"User not found"})
     } catch (e) {
-        ctx.throw(400,e);
+        ctx.throw(e.status || 400,e);
         return;
     }
     ctx.body=user
