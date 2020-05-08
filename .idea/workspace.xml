@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c8dd146-cc63-40f3-9ab4-fe25625787d0" name="Default Changelist" comment="added modeles mongoose, connected user routes with model">
-      <change afterPath="$PROJECT_DIR$/test/assign_api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test3.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/assigns.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/assigns.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/doctors.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/doctors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test2.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/test2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/assign_api.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Mocha.Rest api.Doctors correct.Open slots">
+  <component name="RunManager" selected="Mocha.Assign.Correct.put (1)">
     <configuration default="true" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -91,7 +90,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="Rest api.Doctors correct.Open slots" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="Assign" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -99,16 +98,14 @@
       <pass-parent-env>true</pass-parent-env>
       <ui>bdd</ui>
       <extra-mocha-options />
-      <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test/test2.js</test-file>
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/test/test3.js</test-file>
       <test-names>
-        <name value="Rest api" />
-        <name value="Doctors correct" />
-        <name value="Open slots" />
+        <name value="Assign" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Rest api.Doctors correct.delete" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="Assign.Correct.put (1)" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -117,15 +114,15 @@
       <ui>bdd</ui>
       <extra-mocha-options />
       <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test/test2.js</test-file>
+      <test-file>$PROJECT_DIR$/test/test3.js</test-file>
       <test-names>
-        <name value="Rest api" />
-        <name value="Doctors correct" />
-        <name value="delete" />
+        <name value="Assign" />
+        <name value="Correct" />
+        <name value="put" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Rest api.Users correct.delete" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+    <configuration name="Assign.Correct.put" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
       <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
@@ -134,29 +131,29 @@
       <ui>bdd</ui>
       <extra-mocha-options />
       <test-kind>TEST</test-kind>
-      <test-file>$PROJECT_DIR$/test/test.js</test-file>
+      <test-file>$PROJECT_DIR$/test/assign_api.js</test-file>
       <test-names>
-        <name value="Rest api" />
-        <name value="Users correct" />
-        <name value="delete" />
+        <name value="Assign" />
+        <name value="Correct" />
+        <name value="put" />
       </test-names>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="npm.dev" />
       <item itemvalue="npm.test" />
-      <item itemvalue="Mocha.Rest api.Doctors correct.delete" />
-      <item itemvalue="Mocha.Rest api.Users correct.delete" />
+      <item itemvalue="Mocha.Assign.Correct.put" />
+      <item itemvalue="Mocha.Assign.Correct.put (1)" />
+      <item itemvalue="Mocha.Assign" />
       <item itemvalue="npm.start" />
-      <item itemvalue="Mocha.Rest api.Doctors correct.Open slots" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.start" />
+        <item itemvalue="Mocha.Assign.Correct.put (1)" />
+        <item itemvalue="Mocha.Assign" />
         <item itemvalue="npm.test" />
-        <item itemvalue="Mocha.Rest api.Doctors correct.Open slots" />
-        <item itemvalue="Mocha.Rest api.Users correct.delete" />
-        <item itemvalue="Mocha.Rest api.Doctors correct.delete" />
+        <item itemvalue="Mocha.Assign.Correct.put" />
       </list>
     </recent_temporary>
   </component>
@@ -173,7 +170,7 @@
       <workItem from="1588518833550" duration="5695000" />
       <workItem from="1588597950952" duration="8916000" />
       <workItem from="1588678931295" duration="15089000" />
-      <workItem from="1588763705310" duration="50529000" />
+      <workItem from="1588763705310" duration="59915000" />
     </task>
     <task id="LOCAL-00001" summary="Start unit test http api">
       <created>1588697497043</created>

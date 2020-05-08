@@ -54,7 +54,7 @@ _.get("/",async ctx=>{
     .put("/:id/slot",async ctx=>{
         const res = await Doctor.findOne({"id":ctx.params.id});
         for(let i = 0;i < ctx.request.body.length;i ++)
-        res.slots.push({time:new Date(ctx.request.body[i].time)});
+            res.slots.push({time:new Date(ctx.request.body[i].time)});
         await res.save();
         ctx.body = res;
     });
