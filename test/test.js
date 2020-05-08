@@ -10,35 +10,14 @@ const server = require("../index");
 let should = chai.should();
 chai.use(http);
 
-// Включение режима тестирования
-describe('Create test environment', () => {
-    beforeEach( () => {
-        console.log("788")
-        // await User.deleteMany({});
-        // await Doctor.deleteMany({});
 
-        // let newUsers = [{name:"Keren",phone:"052 875 76 60"},{name: "Miron",phone: "434 54 32"}].map(el=>new User(el));
-        // await Promise.all(newUsers.map(el=>el.save())).then(console.log).catch(console.log);
-
-    })
-});
-
-// Проверка mocha/ chai
-describe("Test System test",function() {
-    describe("start",function () {
-        it("equal",()=>{chai.assert.equal(1,1)});
-        it(" Not equal",()=>{chai.assert.notEqual(1,0)});
-    })
-});
-
-// Проверкаа rest api
+// Проверкаа rest api User
 describe("Rest api",function() {
 
-    describe("Users",function () {
+    describe("Users correct",function () {
         let usersList;
         beforeEach(async () => {
             await User.deleteMany({});
-            await Doctor.deleteMany({});
 
             let newUsers = [{name:"Keren",phone:"052 875 76 60"},{name: "Miron",phone: "434 54 32"}].map(el=>new User(el));
             usersList = await Promise.all(newUsers.map(el=>el.save()))
@@ -64,9 +43,10 @@ describe("Rest api",function() {
                 end((err,res)=>{
                     res.should.have.status(200);
                     res.should.header("content-type","application/json; charset=utf-8");
-                    res.body.should.hasOwnProperty("id");
+                    res.body.should.haveOwnProperty("id");
             })
         });
+
         it("post",(done)=>{
             const phone = "9988";
             const url = `/users/${usersList[0].id}`;
@@ -79,6 +59,7 @@ describe("Rest api",function() {
             })
 
         });
+
         it("delete", (done)=>{
             const url = `/users/${usersList[0].id}`;
             chai.request(server).delete(url).set({"x-api-key":12344}).
@@ -90,5 +71,7 @@ describe("Rest api",function() {
                 collection.length.should.to.equal(1);
                 done()
             })
-    })
-})});
+        })
+})
+
+});
