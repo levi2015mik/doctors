@@ -6,14 +6,24 @@ const User = require("../structures/users");
 const _ = router();
 
 _.get("/",async ctx=>{
-    const slot = await Doctor.aggregate([{$unwind:"$slots"},{$lookup:{"from":"user1","localField": "slots.user","foreignField": "id","as": "user" }}]);
-    ctx.body = slot;
+    ctx.body = await Doctor.getSlots();
+});
+_.get("/:id",async ctx=>{
+    ctx.body = await Doctor.getSlots({id:ctx.params.id});
 });
 
-_.get("/free",async ctx=>{});
-_.get("/free/:id",async ctx=>{});
-_.get("/locked",async ctx=>{});
-_.get("/locked/:id",async ctx=>{});
+_.get("/free",async ctx=>{
+    ctx.body = await Doctor.getSlots({"slots.user":{$exists:false}});
+});
+_.get("/free/:id",async ctx=>{
+    ctx.body = await Doctor.getSlots({$and:[{"slots.user":{$exists:false}},{id:ctx.params.id}]});
+});
+_.get("/locked",async ctx=>{
+    ctx.body = await Doctor.getSlots({"slots.user":{$exists:true}});
+});
+_.get("/locked/:id",async ctx=>{
+    ctx.body = await Doctor.getSlots({$and:[{"slots.user":{$exists:true}},{id:ctx.params.id}]});
+});
 
 
 

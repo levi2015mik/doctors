@@ -47,11 +47,98 @@ describe("Assign",function () {
                 done()
             })
         });
+
         it("get all", async ()=>{});
         it("get all of doctor", async ()=>{});
         it("get free", async ()=>{});
         it("get free of doctor", async ()=>{});
         it("get locked", async ()=>{});
         it("get locked of doctor", async ()=>{});
+    })
+
+    describe("Incorrect assigns", function () {
+        beforeEach(async ()=>{
+            // Добавить объявление открытых слотов
+            let time = new Date();
+            time.setDate(time.getDate() +1);
+            time.setHours(9);
+            time.setMinutes(0);
+
+            let slots = [];
+            const count = 10;
+
+            for (let i = 0;i < count;i ++){
+                slots.push({time:time.getTime()});
+                time.setMinutes(time.getMinutes() + 30)
+            }
+
+            doctor = (await Doctor.find())[0];
+            doctor.slots = slots;
+            await doctor.save();
+            user = (await User.find())[0];
+        });
+        it("wrong user", (done)=>{
+            chai.request(server).put("/assign").set({"x-api-key":12344}).
+            send({
+                user_id:"wrong user",
+                doctor_id:doctor.id,
+                slot:doctor.slots[0].time
+            }).
+            end(async (err,res)=>{
+                res.should.have.status(404);
+                done()
+            })
+        });
+        it("wrong doctor", (done)=>{
+            chai.request(server).put("/assign").set({"x-api-key":12344}).
+            send({
+                user_id:user.id,
+                doctor_id:"wrong doctor",
+                slot:doctor.slots[0].time
+            }).
+            end(async (err,res)=>{
+                res.should.have.status(404);
+                done()
+            })
+        });
+
+        it("Wrong slot", (done)=>{
+            chai.request(server).put("/assign").set({"x-api-key":12344}).send({
+                user_id:user.id,
+                doctor_id:doctor.id,
+                slot:"Wrong slot"
+            }).end(async (err,res)=>{
+                res.should.have.status(404);
+                done()
+            })});
+
+        it("Wrong request", (done)=>{
+            chai.request(server).put("/assign").set({"x-api-key":12344}).send({
+                user_id:user.id,
+                doctor_id:doctor.id,
+            }).end(async (err,res)=>{
+                res.should.have.status(400);
+                done()
+            })});
+
+        it("assigned slot",(done)=>{
+            chai.request(server).put("/assign").set({"x-api-key":12344}).send({
+                user_id:user.id,
+                doctor_id:doctor.id,
+                slot:doctor.slots[0].time
+            }).end(()=>{
+                chai.request(server).put("/assign").set({"x-api-key":12344}).send({
+                    user_id:user.id,
+                    doctor_id:doctor.id,
+                    slot:doctor.slots[0].time
+                })
+                .end(async (err,res)=>{
+                    res.should.have.status(409);
+                    done()
+                })
+            });
+        });
+
+
     })
 });
