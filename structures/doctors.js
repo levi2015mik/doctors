@@ -14,7 +14,7 @@ const _doctor = Schema({
         type: "string",
         required:true
     },
-    slots:[{time:"Date",user:"string"}]
+    slots:[{time:"Date",user:"string",noticed:"number"}]
 });
 
 
@@ -26,15 +26,41 @@ _doctor.pre("validate",function(next){
 const Doctor = model("doctor",_doctor);
 
 // Получение слотов через aggregate
-Doctor.getSlots = function(match){
+Doctor.getSlots = async function(match){
     let conditions = [
         {$unwind:"$slots"},
         {$lookup:{from:"user1",localField: "slots.user",foreignField: "id",as: "user" }},
         {$project:{"_id":0,"user._id":0,"__v":0, "user.__v":0,"slots._id":0}}
     ];
     if(match) conditions.splice(1,0,{$match: match});
-    return this.aggregate(conditions);
+    let out;
+    try{
+        out = await this.aggregate(conditions);
+    }catch (e) {
+        console.error(e)
+    }
+
+    // flat format with optional chaining
+    out = out.map(el=>{
+        return {
+            name:el.name,
+            id:el.id,
+            spec:el.spec,
+            time:el.slots.time,
+            noticed:el.slots.noticed,
+            userId:el.user[0] && el.user[0].id,
+            userPhone:el.user[0] && el.user[0].phone,
+            userName:el.user[0] && el.user[0].name
+        }
+    });
+    return out;
 };
 
+Doctor.updateSlot = async function(id,userId,time,noticed){
+    let current = await this.findOne({id:id});
+    let slot = current.slots.find(el=>el.time.getTime() == time.getTime() && el.user == userId);
+    slot.noticed = noticed;
+    await current.save()
+};
 
 module.exports = Doctor;

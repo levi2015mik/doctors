@@ -54,7 +54,7 @@ describe("Assign",function () {
         it("get free of doctor", async ()=>{});
         it("get locked", async ()=>{});
         it("get locked of doctor", async ()=>{});
-    })
+    });
 
     describe("Incorrect assigns", function () {
         beforeEach(async ()=>{

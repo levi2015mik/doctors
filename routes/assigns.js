@@ -8,7 +8,7 @@ const _ = router();
 _.get("/",async ctx=>{
     ctx.body = await Doctor.getSlots();
 });
-_.get("/:id",async ctx=>{
+_.get("/all/:id",async ctx=>{
     ctx.body = await Doctor.getSlots({id:ctx.params.id});
 });
 

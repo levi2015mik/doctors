@@ -8,7 +8,8 @@
     "start": "node index.js",
     "dev": "node  --inspect index.js",
     "prefill": "node structures/prefill.js",
-    "prefill_dev": "node --inspect structures/prefill.js"
+    "prefill_dev": "node --inspect structures/prefill.js",
+    "remind": "node --inspect reminder.js"
   },
   "author": "",
   "license": "ISC",
