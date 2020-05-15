@@ -1,5 +1,5 @@
 const fs = require("fs");
-const chalk = require("chalk")
+const chalk = require("chalk");
 
 const filename = "messages.log";
 
@@ -9,7 +9,7 @@ const filename = "messages.log";
  * @param phone
  */
 function send(msg, phone) {
-    console.log(chalk.gray("  ---")+ chalk.bold(" MSG") + chalk.blue(msg));
+    console.log(chalk.gray("  ---")+ chalk.bold(" MSG ") + chalk.blue(msg));
     fs.writeFile(filename,msg + "\n",{flag:"a"},()=>{})
 }
 module.exports = send;

@@ -60,7 +60,7 @@ Doctor.updateSlot = async function(id,userId,time,noticed){
     let current = await this.findOne({id:id});
     let slot = current.slots.find(el=>el.time.getTime() == time.getTime() && el.user == userId);
     slot.noticed = noticed;
-    await current.save()
+    await this.updateOne({id:id},current)
 };
 
 module.exports = Doctor;

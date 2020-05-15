@@ -13,7 +13,7 @@ const doctors = require("./routes/doctors");
 const assigns = require("./routes/assigns");
 
 
-reminder();
+reminder.start();
 const app = new Koa();
 app.use(bodyParser({
     formidable:{uploadDir:'/uploads'},
