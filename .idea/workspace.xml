@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7c8dd146-cc63-40f3-9ab4-fe25625787d0" name="Default Changelist" comment="added modeles mongoose, connected user routes with model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/structures/reminder.js" beforeDir="false" afterPath="$PROJECT_DIR$/structures/reminder.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/structures/reservations.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -139,8 +140,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.test" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.prefill" />
         <item itemvalue="Mocha.send remember messages" />
         <item itemvalue="Mocha.send remember messages..2 hours message" />
@@ -162,7 +163,7 @@
       <workItem from="1588678931295" duration="15089000" />
       <workItem from="1588763705310" duration="115843000" />
       <workItem from="1589308684494" duration="19094000" />
-      <workItem from="1589554372248" duration="18165000" />
+      <workItem from="1589554372248" duration="21094000" />
     </task>
     <task id="LOCAL-00001" summary="Start unit test http api">
       <created>1588697497043</created>

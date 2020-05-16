@@ -1,7 +1,7 @@
 const fs = require("fs");
 const chalk = require("chalk");
 
-const filename = "messages.log";
+const filename = process.env.LOG_FILE_NAME || "messages.log";
 
 /**
  *  Заглушка для отправки сообщения
